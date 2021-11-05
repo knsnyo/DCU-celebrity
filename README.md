@@ -1,5 +1,5 @@
 # DCU-celebrity
-* arduino project
+* Arduino project
 
 
 the number is increasing by 1 every 1ms.
