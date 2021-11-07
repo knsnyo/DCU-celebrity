@@ -2,7 +2,7 @@
 int button = 14;
 boolean button_state = false; // button 상태
 unsigned long time_previous, time_current; 
-int current_number = 0;
+unsigned long current_number = 0;
 bool btn_current, btn_previous = false;
 
 // 0에서 9까지 숫자 표현을 위한
