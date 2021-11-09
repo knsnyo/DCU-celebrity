@@ -1,5 +1,5 @@
 #define YEAR 107
-#define MS 100
+#define MS 33
 
 int button = 14; // button pin 번호
 boolean button_state = false; // button 상태
@@ -88,7 +88,7 @@ void return_count() {
       count = 0;
     }
     if(digitalRead(button)){
-      count = 107;
+      //count = 107;
       break;
     }
     show_4_digit(count);
