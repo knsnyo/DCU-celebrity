@@ -1,12 +1,10 @@
 # DCU-celebrity
 * Arduino project
 
-
-the number is increasing by 1 every 1ms.
-
-If you press button, the number stops increasing.
-
-If number is 107, you win.
+It has 3 Games.
+1. Stop at 107 by pressing the button while the number is going up quickly.
+2. 107 slot Machine
+3. Press the green button 107 within 10 seconds.
 
 ---
 
