@@ -1,6 +1,7 @@
 #define YEAR 107
 #define MS 33
 #define SLOT 100
+#define FEVER 10000
 
 int segment1[4] = {2, 3, 4, 5}; // 1자리
 int segment2[4] = {6, 7, 8, 9}; // 10자리
@@ -28,14 +29,14 @@ void setup() {
     pinMode(segment2[i], OUTPUT);
     pinMode(segment3[i], OUTPUT);
   }
-  Serial.begin(9600);
+  //Serial.begin(9600);
 }
 
 void count_number() {
   time_previous = millis();
   while (true) {
     if (digitalRead(button)) {
-      Serial.println(String(i++) + "count_time()");
+      //Serial.println(String(i++) + "count_time()");
       delay(1000);
       break;
     }
@@ -117,7 +118,7 @@ void show_result_number(int number) {
 }
 
 void game1() {
-  Serial.println(String(i) + "game1()");
+  //Serial.println(String(i) + "game1()");
   delay(500);
   count_number();
   show_result_number(count);
@@ -125,7 +126,7 @@ void game1() {
 
 void game2(){
   int result1, result2, result3;
-  Serial.println(String(i) + "game2()");
+  //Serial.println(String(i) + "game2()");
   time_previous = millis();
   while(true){
     show_number3(count);
@@ -182,8 +183,14 @@ void game2(){
 }
 
 void game3() {
-  Serial.println(String(i) + "game3()");
+  //Serial.println(String(i) + "game3()");
+  time_previous = millis();
   while (true) {
+    time_current = millis();
+    if(FEVER <= time_current - time_previous){
+      show_result_number(count);
+      break;
+    }
     if (YEAR == count) {
       show_result_number(count);
       break;
@@ -206,24 +213,24 @@ void game3() {
 void loop() {
   bool menu1 = digitalRead(toggle_menu1); // 0 = ON / 1 = OFF
   bool menu2 = digitalRead(toggle_menu2); // 0 = ON / 1 = OFF
-  //bool menu3 = digitalRead(toggle_menu3); // 0 = ON / 1 = OFF
-  //Serial.println(menu1);
-  if (0 == menu1 && 0 != menu2) {
+  bool menu3 = digitalRead(toggle_menu3); // 0 = ON / 1 = OFF
+  //Serial.println(menu3);
+  if (0 == menu1) {
     menu = 1;
     show_number(1);
-  } else if (0 == menu2 && 0 != menu1) {
+  } else if (0 == menu2) {
     menu = 2;
     show_number(2);
-  } else if (0 == menu1 && 0 == menu2){
-  //else if (3 == menu3){
+  }else if (0 == menu3){
     menu = 3;
     show_number(3);
   }else {
     show_number(0);
+    menu = 0;
   }
   if(digitalRead(button)) {
     show_void(15);
-    Serial.println("button click");
+    //Serial.println("button click");
     delay(1000);
     if (1 == menu) {
       game1();
