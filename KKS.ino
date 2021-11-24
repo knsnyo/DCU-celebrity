@@ -124,7 +124,7 @@ void game1() {
   show_result_number(count);
 }
 
-void game2(){
+int game2(){
   int result1, result2, result3;
   //Serial.println(String(i) + "game2()");
   time_previous = millis();
@@ -144,6 +144,9 @@ void game2(){
     }
   }
   delay(500);
+  if(result != 1){
+    return -1;
+  }
   while(true){
     show_number2(count);
     time_current = millis();
@@ -161,6 +164,9 @@ void game2(){
     }
   }
   delay(500);
+  if(result != 0){
+    return -1;
+  }
   while(true){
     show_number1(count);
     time_current = millis();
@@ -178,8 +184,12 @@ void game2(){
     }
   }
   delay(500);
+  if(result != 1){
+    return -1;
+  }
   int result = 100 * result3 + 10 * result2 + result1;
   show_result_number(result);
+  return 1;
 }
 
 void game3() {
